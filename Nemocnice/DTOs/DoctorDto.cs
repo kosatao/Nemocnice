@@ -20,7 +20,7 @@ namespace Nemocnice.DTO
 		public int Specialization { get; set; }
 
 
-		public string SpecializationStr { get; set; }
-		public IEnumerable<SelectListItem> AllSpecializations { get; set; }
+		public string SpecializationStr { get; set; } = string.Empty;
+		public IEnumerable<SelectListItem> AllSpecializations { get; set; } = new List<SelectListItem>();
 	}
 }

@@ -99,11 +99,13 @@ namespace Nemocnice.Services
 		}
 		public IEnumerable<SelectListItem> GetAllSelect()
 		{
+			var hospitalizations =dbContext.Hospitalizations.ToList();
 			var data = dbContext.Pacients.ToList();
 			var result = new List<SelectListItem>();
 			foreach (var patient in data)
 			{
-				result.Add(new SelectListItem(patient.LastName, patient.Id.ToString()));
+				if (!hospitalizations.Any(x=>x.PatientId ==patient.Id))
+					result.Add(new SelectListItem(patient.LastName, patient.Id.ToString()));
 			}
 
 			return result;

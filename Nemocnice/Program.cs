@@ -9,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DbContext>(options => {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb"));
+   //options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb"));
+	//options.UseSqlServer(builder.Configuration.GetConnectionString("MonsterDb"));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("MonsterForLocalDb"));
+	
 });
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<DbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<DoctorService>();
