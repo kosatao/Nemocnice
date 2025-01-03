@@ -1,0 +1,47 @@
+﻿@using Nemocnice.DTO
+@model PatientDto
+
+
+<div>
+
+		<form class="vertical-form" method="post" enctype="multipart/form-data" asp-controller="Patient" asp-action=@(Model != null ? "Update" : "Create")>
+			<input hidden asp-for="Id" />
+
+			<label>Jmeno</label>
+			<input class="inp-form" asp-for="Name" />
+
+			<label>Prijmeni</label>
+			<input class="inp-form" asp-for="SureName" />
+
+
+			<label>Email</label>
+			<input class="inp-form" type="email" asp-for="Email" />
+
+		<button class="create-btn" type="submit">@(Model != null ? "Update" : "Create")</button>
+		</form>
+	
+
+</div>
+
+
+<style>
+	.create-btn {
+		margin: 12px 0px;
+		padding: 10px 20px;
+		background-color: yellow;
+		border-radius: 10px;
+		border: none;
+	}
+
+	.vertical-form {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 2px;
+	}
+
+	.inp-form {
+		margin: 0px 0px 16px 0px;
+	}
+
+</style>

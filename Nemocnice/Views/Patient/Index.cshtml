@@ -1,0 +1,91 @@
+﻿@using Nemocnice.DTOs
+@model PatientViewDto
+
+
+<div>
+	@if (Model.AllPatients.Count() != 0)
+	{
+		<table>
+			<thead>
+				<tr>
+					<th>Jmeno</th>
+					<th>Prijmeni</th>
+					<th>Email</th>
+					<th>Akce</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model.AllPatients)
+				{
+					<tr>
+						<td>@item.Name</td>
+						<td>@item.SureName</td>
+						<td>@item.Email</td>
+						<td>
+							<div class="btn-container">
+								<form method="post">
+									<button class="akce-btn" type="submit" asp-action="Delete" asp-controller="Patient"
+											asp-route-id="@item.Id">
+										Delete
+									</button>
+								</form>
+								<form method="get">
+									<button class="akce-btn" type="submit" asp-action="Edit" asp-controller="Patient"
+											asp-route-id="@item.Id">
+										Edit
+									</button>
+								</form>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+
+
+	<button class="create-btn">
+		<a asp-controller="Patient" asp-action="Create">Create</a>
+	</button>
+
+
+
+	<style>
+		table, td, th {
+			border: solid red;
+			padding: 10px 20px;
+			text-align: center;
+		}
+
+		.create-btn {
+			margin: 12px 0px;
+			padding: 10px 20px;
+			background-color: yellow;
+			border-radius: 10px;
+			border: none;
+		}
+
+		.akce-btn {
+			margin: 8px;
+			padding: 4px 8px;
+			background-color: lightgreen;
+			border-radius: 8px;
+			border: none;
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.btn-container {
+			display: flex;
+			gap: 10px;
+			justify-content: center;
+			align-items: center;
+			margin: 20px 0;
+		}
+	</style>
+
+
+

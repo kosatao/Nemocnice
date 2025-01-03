@@ -1,0 +1,66 @@
+﻿@using Nemocnice.DTO
+@model DoctorDto
+
+
+<div>
+	<form class="vertical-form" method="post" enctype="multipart/form-data" asp-controller="Doctor" asp-action=@(Model.Id.HasValue ? "Update" : "Create")>
+		<input hidden asp-for="Id" />
+
+		<div class="form-group">
+			<label>Jmeno</label>
+			<input class="inp-form" asp-for="Name" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+
+
+		<div class="form-group">
+			<label>Prijmeni</label>
+			<input class="inp-form" asp-for="SureName" />
+			<span asp-validation-for="SureName" class="text-danger"></span>
+		</div>
+
+		<div class="form-group">
+			<label>Specializace</label>
+			@* <input class="inp-form" type="number" asp-for="Specialization" /> *@
+			<select asp-for="Specialization">
+				@foreach (var item in Model.AllSpecializations)
+				{
+					<option value="@item.Value">@item.Text</option>
+				}
+			</select>
+			<span asp-validation-for="Specialization" class="text-danger"></span>
+		</div>
+
+		<button class="create-btn" type="submit">@(Model.Id.HasValue ? "Update" : "Create") </button>
+	</form>
+</div>
+
+
+<style>
+	.create-btn {
+		margin: 12px 0px;
+		padding: 10px 20px;
+		background-color: yellow;
+		border-radius: 10px;
+		border: none;
+	}
+
+	.vertical-form {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 2px;
+	}
+
+	.inp-form {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+
+	.form-group {
+		margin-bottom: 16px;
+		display: flex;
+		flex-direction:column;
+	}
+
+</style>
