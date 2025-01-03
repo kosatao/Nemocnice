@@ -55,25 +55,25 @@ namespace Nemocnice.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpGet]
-		public IActionResult Edit(int id)
-		{
-			var model = _service.Get(id);
-			var allDoctors = _doctorService.GetAllSelect();
-			var allPatients = _patientService.GetAllSelect();
+		//[HttpGet]
+		//public IActionResult Edit(int id)
+		//{
+		//	var model = _service.Get(id);
+		//	var allDoctors = _doctorService.GetAllSelect();
+		//	var allPatients = _patientService.GetAllSelect();
 
-			model.AllDoctors = allDoctors;
-			model.AllPatients = allPatients;
+		//	model.AllDoctors = allDoctors;
+		//	model.AllPatients = allPatients;
 
-			return View("Create", model);
-		}
+		//	return View("Create", model);
+		//}
 
-		[HttpPost]
-		public IActionResult Update(HospitalizationDto model)
-		{
-			var isSuccess = _service.Edit(model);
-			return RedirectToAction("Index");
-		}
+		//[HttpPost]
+		//public IActionResult Update(HospitalizationDto model)
+		//{
+		//	var isSuccess = _service.Edit(model);
+		//	return RedirectToAction("Index");
+		//}
 	}
 }
 
